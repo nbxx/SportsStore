@@ -7,6 +7,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Moq;
 using Vic.SportsStore.Domain.Abstract;
+using Vic.SportsStore.Domain.Concrete;
 using Vic.SportsStore.Domain.Entities;
 using Vic.SportsStore.Domain.Mock;
 
@@ -30,7 +31,7 @@ namespace Vic.SportsStore.WebApp
             //#endregion
 
             #region mock class
-            builder.RegisterInstance<IProductsRepository>(new MockProductsRepository());
+            builder.RegisterInstance<IProductsRepository>(new EFProductRepository());
             #endregion
 
             builder.RegisterControllers(AppDomain.CurrentDomain.GetAssemblies());
