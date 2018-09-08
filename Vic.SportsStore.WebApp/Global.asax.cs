@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Vic.SportsStore.Domain.Entities;
+using Vic.SportsStore.WebApp.Infrastructure.Binders;
 
 namespace Vic.SportsStore.WebApp
 {
@@ -16,6 +18,8 @@ namespace Vic.SportsStore.WebApp
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AutofacConfig.Register();
+
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }

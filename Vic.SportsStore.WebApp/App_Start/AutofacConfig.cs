@@ -19,22 +19,11 @@ namespace Vic.SportsStore.WebApp
         {
             var builder = new ContainerBuilder();
 
-            //#region moq library
-            //Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
-            //mock.Setup(m => m.Products).Returns(new List<Product>
-            //{
-            //    new Product { Name = "Football", Price = 25 },
-            //    new Product { Name = "Surf board", Price = 179 },
-            //    new Product { Name = "Running shoes", Price = 95 }
-            //});
-            //builder.RegisterInstance<IProductsRepository>(mock.Object);
-            //#endregion
-
-            #region mock class
-            builder.RegisterInstance<IProductsRepository>(new EFProductRepository());
-            #endregion
-
             builder.RegisterControllers(AppDomain.CurrentDomain.GetAssemblies());
+
+            builder.RegisterInstance<IProductsRepository>(new EFProductRepository());
+
+            builder.RegisterInstance<IOrderProcessor>(new EmailOrderProcessor(new EmailSettings()));
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
