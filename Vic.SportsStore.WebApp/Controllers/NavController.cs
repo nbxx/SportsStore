@@ -24,11 +24,9 @@ namespace Vic.SportsStore.WebApp.Controllers
                 .Products
                 .Select(x => x.Category)
                 .Distinct()
-                .OrderBy(x => x)
-                .ToArray()
-                .Where(x => !string.IsNullOrWhiteSpace(x));
+                .OrderBy(x => x);
 
-            return PartialView(categories);
+            return PartialView("FlexMenu", categories);
         }
     }
 
