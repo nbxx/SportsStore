@@ -30,5 +30,9 @@ namespace Vic.SportsStore.Domain.Entities
 
         public string Note { get; set; }
 
+        public byte[] ImageData { get; set; }
+
+        public string ImageMimeType { get; set; }
+
     }
 }

@@ -78,17 +78,9 @@
     <Compile Include="Entities\EmailSettings.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
-    <Compile Include="Migrations\201808251906335_InitialCreate.cs" />
-    <Compile Include="Migrations\201808251906335_InitialCreate.Designer.cs">
-      <DependentUpon>201808251906335_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809292101049_ModifyProduct.cs" />
-    <Compile Include="Migrations\201809292101049_ModifyProduct.Designer.cs">
-      <DependentUpon>201809292101049_ModifyProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810131703429_change1.cs" />
-    <Compile Include="Migrations\201810131703429_change1.Designer.cs">
-      <DependentUpon>201810131703429_change1.cs</DependentUpon>
+    <Compile Include="Migrations\201810131927288_Product.cs" />
+    <Compile Include="Migrations\201810131927288_Product.Designer.cs">
+      <DependentUpon>201810131927288_Product.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mock\MockProductsRepository.cs" />
@@ -99,14 +91,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808251906335_InitialCreate.resx">
-      <DependentUpon>201808251906335_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809292101049_ModifyProduct.resx">
-      <DependentUpon>201809292101049_ModifyProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810131703429_change1.resx">
-      <DependentUpon>201810131703429_change1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810131927288_Product.resx">
+      <DependentUpon>201810131927288_Product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
