@@ -10,6 +10,8 @@ using Vic.SportsStore.Domain.Abstract;
 using Vic.SportsStore.Domain.Concrete;
 using Vic.SportsStore.Domain.Entities;
 using Vic.SportsStore.Domain.Mock;
+using Vic.SportsStore.WebApp.Infrastructure.Abstract;
+using Vic.SportsStore.WebApp.Infrastructure.Concrete;
 
 namespace Vic.SportsStore.WebApp
 {
@@ -24,6 +26,8 @@ namespace Vic.SportsStore.WebApp
             builder.RegisterInstance<IProductsRepository>(new EFProductRepository());
 
             builder.RegisterInstance<IOrderProcessor>(new EmailOrderProcessor(new EmailSettings()));
+
+            builder.RegisterInstance<IAuthProvider>(new FormsAuthProvider());
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

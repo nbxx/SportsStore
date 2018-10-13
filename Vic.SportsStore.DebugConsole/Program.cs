@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Vic.SportsStore.Domain.Concrete;
@@ -10,26 +11,40 @@ namespace Vic.SportsStore.DebugConsole
 {
     class Program
     {
+        static string HashMD5(string text)
+        {
+            var source = Encoding.UTF8.GetBytes(text);
+
+            using (MD5 hasher = MD5.Create())
+            {
+                var result = hasher.ComputeHash(source);
+
+                return Convert.ToBase64String(result);
+            }
+        }
+
         static void Main(string[] args)
         {
-            using (var ctx = new EFDbContext())
-            {
-                for (int i = 0; i < 20; i++)
-                {
-                    var product = new Product()
-                    {
-                        Name = "abc" + i.ToString(),
-                        Description = "efg" + i.ToString(),
-                        Category = "hij" + i.ToString(),
-                        Price = i + 1,
-                    };
+            var pwdHash = HashMD5("pwd");
 
-                    ctx.Products.Add(product);
-                }
+            //using (var ctx = new EFDbContext())
+            //{
+            //    for (int i = 0; i < 20; i++)
+            //    {
+            //        var product = new Product()
+            //        {
+            //            Name = "abc" + i.ToString(),
+            //            Description = "efg" + i.ToString(),
+            //            Category = "hij" + i.ToString(),
+            //            Price = i + 1,
+            //        };
+
+            //        ctx.Products.Add(product);
+            //    }
 
 
-                ctx.SaveChanges();
-            }
+            //    ctx.SaveChanges();
+            //}
         }
     }
 }

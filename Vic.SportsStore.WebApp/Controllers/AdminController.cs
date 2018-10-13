@@ -8,6 +8,7 @@ using Vic.SportsStore.Domain.Entities;
 
 namespace Vic.SportsStore.WebApp.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductsRepository repository;
