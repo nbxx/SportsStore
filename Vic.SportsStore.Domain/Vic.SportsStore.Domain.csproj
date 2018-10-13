@@ -78,9 +78,14 @@
     <Compile Include="Entities\EmailSettings.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Migrations\201810131927288_Product.cs" />
     <Compile Include="Migrations\201810131927288_Product.Designer.cs">
       <DependentUpon>201810131927288_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810132012377_AddUserTable.cs" />
+    <Compile Include="Migrations\201810132012377_AddUserTable.Designer.cs">
+      <DependentUpon>201810132012377_AddUserTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mock\MockProductsRepository.cs" />
@@ -93,6 +98,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810131927288_Product.resx">
       <DependentUpon>201810131927288_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810132012377_AddUserTable.resx">
+      <DependentUpon>201810132012377_AddUserTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

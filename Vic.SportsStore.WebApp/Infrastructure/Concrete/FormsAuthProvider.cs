@@ -5,12 +5,15 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Security;
+using Vic.SportsStore.Domain.Concrete;
 using Vic.SportsStore.WebApp.Infrastructure.Abstract;
 
 namespace Vic.SportsStore.WebApp.Infrastructure.Concrete
 {
     public class FormsAuthProvider : IAuthProvider
     {
+        public EFDbContext EFDbContext { get; set; }
+
         static string HashMD5(string text)
         {
             var source = Encoding.UTF8.GetBytes(text);
@@ -23,18 +26,21 @@ namespace Vic.SportsStore.WebApp.Infrastructure.Concrete
             }
         }
 
-        private const string DefaultUser = "admin3";
-        private const string DefaultPwd = "kAPR3yLrTTggAVBwOFGUyA==";
+        private const string DefaultPwd = "kAPR3yLrTTggAVBwOFGUyA=="; //pwd
 
         public bool Authenticate(string username, string password)
         {
             bool result = false;
 
-            if (username.Equals(DefaultUser, StringComparison.OrdinalIgnoreCase))
+            var user = EFDbContext
+                .Users
+                .FirstOrDefault(i => i.Username == username);
+
+            if (user != null)
             {
                 var inputPwdHash = HashMD5(password);
 
-                if (inputPwdHash == DefaultPwd)
+                if (user.PasswordHash == inputPwdHash)
                 {
                     result = true;
                 }
