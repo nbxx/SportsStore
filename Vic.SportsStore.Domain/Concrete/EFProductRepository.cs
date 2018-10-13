@@ -10,13 +10,13 @@ namespace Vic.SportsStore.Domain.Concrete
 {
     public class EFProductRepository : IProductsRepository
     {
-        public EFDbContext EFDbContext { get; set; }
+        public EFDbContext Context { get; set; }
 
         public IEnumerable<Product> Products
         {
             get
             {
-                return EFDbContext.Products;
+                return Context.Products;
             }
         }
 
@@ -24,11 +24,11 @@ namespace Vic.SportsStore.Domain.Concrete
         {
             if (product.ProductId == 0)
             {
-                EFDbContext.Products.Add(product);
+                Context.Products.Add(product);
             }
             else
             {
-                Product dbEntry = EFDbContext.Products.Find(product.ProductId);
+                Product dbEntry = Context.Products.Find(product.ProductId);
 
                 if (dbEntry != null)
                 {
@@ -41,17 +41,17 @@ namespace Vic.SportsStore.Domain.Concrete
                 }
             }
 
-            EFDbContext.SaveChanges();
+            Context.SaveChanges();
         }
 
         public Product DeleteProduct(int productId)
         {
-            Product dbEntry = EFDbContext.Products.Find(productId);
+            Product dbEntry = Context.Products.Find(productId);
 
             if (dbEntry != null)
             {
-                EFDbContext.Products.Remove(dbEntry);
-                EFDbContext.SaveChanges();
+                Context.Products.Remove(dbEntry);
+                Context.SaveChanges();
             }
 
             return dbEntry;

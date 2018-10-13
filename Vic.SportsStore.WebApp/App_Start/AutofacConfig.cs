@@ -33,7 +33,8 @@ namespace Vic.SportsStore.WebApp
                 .PropertiesAutowired();
 
             builder
-                .RegisterType<EFDbContext>();
+                .RegisterType<EFDbContext>()
+                .SingleInstance();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
