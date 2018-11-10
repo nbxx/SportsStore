@@ -7,13 +7,13 @@ namespace Vic.SportsStore.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddUserTable : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUserTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810132012377_AddUserTable"; }
+            get { return "201811102104493_Init"; }
         }
         
         string IMigrationMetadata.Source

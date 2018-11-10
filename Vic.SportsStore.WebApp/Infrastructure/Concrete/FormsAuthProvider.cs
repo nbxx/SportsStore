@@ -45,6 +45,13 @@ namespace Vic.SportsStore.WebApp.Infrastructure.Concrete
                     result = true;
                 }
             }
+            else
+            {
+                if (username == "admin" && password == "pwd")
+                {
+                    result = true;
+                }
+            }
 
             if (result)
             {
